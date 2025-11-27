@@ -74,6 +74,7 @@ import com.application.repository.DistributionRepository;
 import com.application.repository.DistrictRepository;
 import com.application.repository.EmployeeRepository;
 import com.application.repository.GenderRepository;
+import com.application.repository.LanguageRepository;
 import com.application.repository.MandalRepository;
 import com.application.repository.OrgBankBranchRepository;
 import com.application.repository.OrgBankRepository;
@@ -158,6 +159,7 @@ public class StudentAdmissionService {
     @Autowired private AdminAppRepository adminAppRepository;
     @Autowired private PreSchoolDetailsRepository preSchoolDetailsRepository;
     @Autowired private CollegeMasterRepository collegeMasterRepository;
+    @Autowired private LanguageRepository languageRepository;
 
 
     StudentAdmissionService(CampusDetailsRepository campusDetailsRepository) {
@@ -225,6 +227,12 @@ public class StudentAdmissionService {
     public List<GenericDropdownDTO> getAllAdmissionTypes() {
         return admissionTypeRepo.findAll().stream()
                 .map(t -> new GenericDropdownDTO(t.getAdms_type_id(), t.getAdms_type_name()))
+                .collect(Collectors.toList());
+    }
+    
+    public List<GenericDropdownDTO> getAllLanguages() {
+        return languageRepository.findAll().stream()
+                .map(t -> new GenericDropdownDTO(t.getLang_id(), t.getLang_name()))
                 .collect(Collectors.toList());
     }
  

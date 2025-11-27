@@ -89,6 +89,11 @@ public class StudentAdmissionController {
         return studentAdmissionService.getAllStudentTypes();
     }
  
+    @GetMapping("/languages")//used/c
+    public List<GenericDropdownDTO> getAllLanguages() {
+        return studentAdmissionService.getAllLanguages();
+    }
+ 
     @GetMapping("/genders")//used/c
     public List<GenericDropdownDTO> getGenders() {
         return studentAdmissionService.getAllGenders();
